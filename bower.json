@@ -17,5 +17,14 @@
     "bootstrap": "~3.3.5",
     "font-awesome": "~4.4.0",
     "react": "~0.13.3"
+  },
+  "overrides": {
+    "bootstrap": {
+      "main": "dist/css/bootstrap.css",
+      "dependencies": {}
+    },
+    "font-awesome": {
+      "main": "css/font-awesome.css"
+    }
   }
 }

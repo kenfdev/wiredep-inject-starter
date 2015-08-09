@@ -4,16 +4,13 @@ var $ = require('gulp-load-plugins')({
 });
 
 gulp.task('wiredep', function() {
-  var options = {
-    bowerJson: './bower.json',
-    directory: './bower_components',
-    ignorePath: '../..'
-  };
   var wiredep = require('wiredep').stream;
 
   return gulp
-    .src('./src/client.index.html')
-    .pipe(wiredep(options))
-    .pipe($.inject(gulp.src('./src/**/*.js')))
-    .pipe(gulp.dest('./src/client'))
+    .src('./src/client/index.html')
+    .pipe(wiredep()) // wiredep bower dependencies
+    .pipe($.inject(gulp.src(['./src/**/*.js', './src/**/*.css']), {
+      relative: true // no need for the './src/client' part
+    }))
+    .pipe(gulp.dest('./src/client')) // output the index.html
 })
